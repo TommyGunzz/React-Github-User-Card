@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-// eslint-disable-next-line no-unused-vars
-import axios from "axios";
 import Card from './components/Card'
 
 class App extends Component {
@@ -18,7 +16,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("https://api.github.com/users/Tommy-Gunzz")
+    fetch("https://api.github.com/users/tommygunzz")
       .then((res) => res.json())
       .then((userData) => {
         console.log("User Data", userData);

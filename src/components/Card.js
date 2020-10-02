@@ -7,7 +7,7 @@ function Card(props) {
     const handleFollower = (e) => {
       e.preventDefault();
       axios
-        .get(`https://api.github.com/users/tommy-gunzz/followers`)
+        .get(`https://api.github.com/users/tommygunzz/followers`)
         .then((res) => {
           setFollower(res.data);
           console.log("Followers ", follower);
