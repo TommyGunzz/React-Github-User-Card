@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import axios from "axios";
+import Card from './components/Card'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      name: [],
+      avatar: [],
+      repos: [],
+      followers: [],
+      following: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch("https://api.github.com/users/Tommy-Gunzz")
+      .then((res) => res.json())
+      .then((userData) => {
+        console.log("User Data", userData);
+        this.setState({ name: userData.name });
+        this.setState({ avatar: userData.avatar_url });
+        this.setState({ repos: userData.public_repos });
+        this.setState({ followers: userData.followers });
+        this.setState({ following: userData.following})
+        
+
+      })
+      .catch((err) => console.error(err));
+  }
+
+  render() {
+    return (
+      <div className="profile">
+        <img className="profile-pic" src={this.state.avatar} />
+        <div className="profile-bottom">
+          <p> Name: {this.state.name}</p>
+          <p> Repo: {this.state.repos}</p>
+          <p> followers: {this.state.followers} </p>
+          <p> following: {this.state.following} </p>
+        </div>
+        <Card />
+      </div>
+    );
+  }
 }
 
 export default App;
