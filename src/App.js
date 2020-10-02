@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+// eslint-disable-next-line no-unused-vars
 import axios from "axios";
 import Card from './components/Card'
 
@@ -35,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <div className="profile">
-        <img className="profile-pic" src={this.state.avatar} />
+        <img className="profile-pic" alt="tommy" src={this.state.avatar}  />
         <div className="profile-bottom">
           <p> Name: {this.state.name}</p>
           <p> Repo: {this.state.repos}</p>
